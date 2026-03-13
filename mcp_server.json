@@ -1,0 +1,33 @@
+{
+  "name": "winrm-mcp-server",
+  "display_name": "WinRM MCP Server",
+  "description": "MCP server that provides tools for managing Windows hosts via WinRM (PowerShell/CMD, services, disks, eventlog).",
+  "transport": "stdio",
+  "entrypoint": {
+    "type": "python",
+    "module": "winrm_mcp_server.server",
+    "callable": "main"
+  },
+  "python": {
+    "requires_python": ">=3.10",
+    "dependencies": [
+      "mcp>=1.0.0",
+      "pywinrm>=0.4.3"
+    ]
+  },
+  "env": {
+    "WINRM_USERNAME": {
+      "required": true,
+      "description": "WinRM username (DOMAIN\\\\user or user@domain)."
+    },
+    "WINRM_PASSWORD": {
+      "required": true,
+      "description": "WinRM password."
+    },
+    "WINRM_DOMAIN": {
+      "required": false,
+      "description": "Optional domain (used if WINRM_USERNAME is not domain-qualified)."
+    }
+  }
+}
+
